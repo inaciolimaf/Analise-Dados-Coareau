@@ -47,7 +47,7 @@ class DadosCoreau:
         dfFiltrado = dfFiltrado.drop(columns="salarioFloat")
         # Remove a coluna
         return dfFiltrado
-    
+
     @staticmethod
     def _exportar_pdf(df: pd.DataFrame, html_file_path: str, pdf_file_path: str):
         html_file_path = os.path.join("resultados", html_file_path)
@@ -62,7 +62,7 @@ class DadosCoreau:
             # Cria a pasta resultados
         df.to_html(html_file_path, index=False, encoding="utf-8")
         # Cria o arquivo html
-        
+
         # Para usar isso é necessário instalar algumas coisas
         # Mais informaçãoes em: https://github.com/JazzCore/python-pdfkit/wiki/Installing-wkhtmltopdf
         try:
@@ -77,6 +77,10 @@ class DadosCoreau:
         for cargo in cargos:
             self.filtrar_cargo(cargo, html_file_path,
                                pdf_file_path, ordenar_salario)
+
+    def exportar_dados_completos(self):
+        self._exportar_pdf(self.dados, f"Todos os dados.html",
+                           f"Todos os dados.pdf")
 
 
 if __name__ == "__main__":
