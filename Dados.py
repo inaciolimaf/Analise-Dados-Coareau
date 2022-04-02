@@ -86,3 +86,4 @@ class DadosCoreau:
 if __name__ == "__main__":
     dados = DadosCoreau()
     dados.filtrar_todos_cargos(ordenar_salario=True)
+    dados.exportar_dados_completos()
